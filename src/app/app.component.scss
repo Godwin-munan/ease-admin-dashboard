@@ -1,0 +1,54 @@
+$offcavas_width: 270px;
+$topNavbarHeight: 56px;
+
+
+@mixin offcavaHeight($height){
+  height: calc(100% - $height);
+}
+
+
+.sidebar-nav {
+  width: $offcavas_width; 
+}
+
+.text-core {
+  color: #888888;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-link .right-icon {
+  display: inline-flex;
+  transition: all ease 0.25s;
+}
+
+.sidebar-link[aria-expanded="true"] .right-icon {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 992px) {
+
+  body {
+    overflow: auto !important;
+  }
+
+  .offcanvas-backdrop::before {
+    display: none;
+  }
+
+  main {
+    margin-left: $offcavas_width;
+  }
+
+  .sidebar-nav {
+    transform: none;
+    visibility: visible !important;
+    top: $topNavbarHeight;
+    @include offcavaHeight($topNavbarHeight);
+
+    // @debug (100% - $topNavbarHeight);
+  }
+}
